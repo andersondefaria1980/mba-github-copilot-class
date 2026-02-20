@@ -1,0 +1,3 @@
+# Prompt 5 - JWT Authentication
+
+Implement /backend/src/routes/auth.js with router.post('/login', authController.login). Controller /src/controllers/authController.js: async function login(req, res) that receives {username, password}, queries SELECT * FROM users WHERE username=$1, validates with bcrypt.compare(password, user.password_hash), generates JWT token with jwt.sign({userId: user.id, username: user.username}, process.env.JWT_SECRET, {expiresIn: '24h'}), returns res.json({token, username}). Errors: 400 missing fields, 401 invalid credentials. Middleware /src/middleware/auth.js: extracts token from req.headers.authorization (Bearer token), verifies with jwt.verify, attaches decoded to req.user, next(). Errors: 401 token missing, 403 invalid token.

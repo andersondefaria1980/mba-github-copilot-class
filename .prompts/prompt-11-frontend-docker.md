@@ -1,0 +1,3 @@
+# Prompt 11 - Frontend Docker and Nginx
+
+Create /frontend/Dockerfile multi-stage. Stage 1: FROM node:18-alpine AS build, WORKDIR /app, COPY package*.json ./, RUN npm install, COPY . ., ARG VITE_API_URL=http://localhost:3001, ENV VITE_API_URL=$VITE_API_URL, RUN npm run build. Stage 2: FROM nginx:alpine, COPY --from=build /app/dist /usr/share/nginx/html, COPY nginx.conf /etc/nginx/conf.d/default.conf, EXPOSE 80, CMD ['nginx', '-g', 'daemon off;']. Create /frontend/nginx.conf: server {listen 80; location / {root /usr/share/nginx/html; index index.html; try_files $uri $uri/ /index.html;} location /api/ {proxy_pass http://api:3001/api/; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr;}}. Create /frontend/.dockerignore with node_modules, dist, .env, .git.

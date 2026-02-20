@@ -1,0 +1,3 @@
+# Prompt 2 - Backend Setup
+
+Create /backend/package.json with dependencies: express@^4.18.0, pg@^8.11.0, bcrypt@^5.1.0, jsonwebtoken@^9.0.0, dotenv@^16.0.0, cors@^2.8.5. DevDependencies: nodemon@^3.0.0, jest@^29.0.0, supertest@^6.3.0. Scripts: 'start': 'node src/server.js', 'dev': 'nodemon src/server.js', 'test': 'jest --coverage'. Create structure: /src/server.js, /src/config/database.js, /src/routes/, /src/controllers/, /src/middleware/, /src/utils/. Create /backend/.env.example with DATABASE_URL=postgresql://admin:admin123@postgres:5432/customersdb, JWT_SECRET=change-this-secret-key, PORT=3001.

@@ -1,0 +1,3 @@
+# Prompt 6 - CRUD Customers API
+
+Implement /backend/src/routes/customers.js with auth middleware protection. GET / lists all, POST / creates, PUT /:id updates. Controller /src/controllers/customersController.js with pg pool: getAll executes SELECT * FROM customers ORDER BY name ASC, create validates fields (name, email, phone required), executes INSERT RETURNING *, returns 201. update executes UPDATE WHERE id=$1 RETURNING *, returns 404 if rowCount=0. Validators /src/utils/validators.js: validateEmail(email) regex /^[^\s@]+@[^\s@]+\.[^\s@]+$/, validateCustomer(data) checks required fields exist. Error handling try/catch returns res.status(500).json({error: message}).

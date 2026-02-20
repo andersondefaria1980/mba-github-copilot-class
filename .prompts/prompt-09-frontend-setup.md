@@ -1,0 +1,3 @@
+# Prompt 9 - Frontend React Setup
+
+Create React app in /frontend by running 'npm create vite@latest . -- --template react'. Install dependencies: axios@^1.6.0, react-router-dom@^6.20.0. Structure: /src/components/Login.jsx, /src/components/CustomerList.jsx, /src/components/CustomerForm.jsx, /src/components/ProtectedRoute.jsx, /src/contexts/AuthContext.jsx, /src/services/api.js, /src/App.jsx. Create /frontend/.env.example with VITE_API_URL=http://localhost:3001. AuthContext: createContext, provider with state [token, user], functions login(token, username) saves to localStorage, logout clears localStorage, useEffect loads token on mount. api.js: axios.create with baseURL process.env.VITE_API_URL, interceptor request adds Authorization Bearer token from localStorage.

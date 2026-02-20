@@ -1,0 +1,3 @@
+# Prompt 7 - Backend Tests with Jest
+
+Configure Jest /backend/jest.config.js: module.exports = {testEnvironment: 'node', coverageThreshold: {global: {branches: 70, functions: 70, lines: 70, statements: 70}}, testMatch: ['**/tests/**/*.test.js']}. Create /backend/tests/auth.test.js: mock bcrypt and jwt, test authController.login with valid credentials (returns token), invalid (401), missing fields (400). Create /backend/tests/customers.test.js: mock pool pg, test getAll returns array, create with valid data (201), invalid email (400), update existing (200) and non-existing (404). Create /backend/tests/validators.test.js: test validateEmail with valid/invalid emails. Use jest.mock for dependencies.
