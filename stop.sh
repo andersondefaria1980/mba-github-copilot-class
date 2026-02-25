@@ -3,11 +3,11 @@
 echo "🛑 Stopping Customer Registration System..."
 echo ""
 
-# Stop and remove all containers and volumes
-docker compose down -v
+# Stop and remove all containers (volumes are preserved)
+docker compose down
 
 echo ""
-echo "✅ Application stopped and volumes removed"
+echo "✅ Application stopped (volumes preserved)"
 echo ""
 echo "🚀 To start again, run: ./start.sh"
 echo ""
