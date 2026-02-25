@@ -23,13 +23,13 @@ async function create(req, res) {
       return res.status(400).json({ error: validation.errors.join(', ') });
     }
 
-    const { name, birth_date, email, phone, profession, country, state, city, street, number, postal_code } = customerData;
+    const { name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, monthly_income, bank_name, bank_account_number, bank_account_holder } = customerData;
 
     const result = await pool.query(
-      `INSERT INTO customers (name, birth_date, email, phone, profession, country, state, city, street, number, postal_code)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+      `INSERT INTO customers (name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, monthly_income, bank_name, bank_account_number, bank_account_holder)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
        RETURNING *`,
-      [name, birth_date, email, phone, profession, country, state, city, street, number, postal_code]
+      [name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, monthly_income, bank_name, bank_account_number, bank_account_holder]
     );
 
     res.status(201).json(result.rows[0]);
@@ -53,16 +53,17 @@ async function update(req, res) {
       return res.status(400).json({ error: validation.errors.join(', ') });
     }
 
-    const { name, birth_date, email, phone, profession, country, state, city, street, number, postal_code } = customerData;
+    const { name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, monthly_income, bank_name, bank_account_number, bank_account_holder } = customerData;
 
     const result = await pool.query(
       `UPDATE customers 
        SET name = $1, birth_date = $2, email = $3, phone = $4, profession = $5, 
            country = $6, state = $7, city = $8, street = $9, number = $10, postal_code = $11,
+           monthly_income = $12, bank_name = $13, bank_account_number = $14, bank_account_holder = $15,
            updated_at = CURRENT_TIMESTAMP
-       WHERE id = $12
+       WHERE id = $16
        RETURNING *`,
-      [name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, id]
+      [name, birth_date, email, phone, profession, country, state, city, street, number, postal_code, monthly_income, bank_name, bank_account_number, bank_account_holder, id]
     );
 
     if (result.rowCount === 0) {

@@ -15,7 +15,11 @@ const CustomerForm = () => {
     city: '',
     street: '',
     number: '',
-    postal_code: ''
+    postal_code: '',
+    monthly_income: '',
+    bank_name: '',
+    bank_account_number: '',
+    bank_account_holder: ''
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -165,7 +169,57 @@ const CustomerForm = () => {
               onChange={handleChange}
             />
           </div>
+
+          <div className="form-group">
+            <label htmlFor="monthly_income">Monthly Income</label>
+            <input
+              id="monthly_income"
+              name="monthly_income"
+              type="number"
+              min="0"
+              step="0.01"
+              value={formData.monthly_income}
+              onChange={handleChange}
+            />
+          </div>
         </div>
+
+        <div className="form-section">
+          <h2>Bank Details</h2>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="bank_name">Bank Name</label>
+              <input
+                id="bank_name"
+                name="bank_name"
+                type="text"
+                value={formData.bank_name}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="bank_account_number">Account Number</label>
+              <input
+                id="bank_account_number"
+                name="bank_account_number"
+                type="text"
+                value={formData.bank_account_number}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="bank_account_holder">Account Holder Name</label>
+            <input
+              id="bank_account_holder"
+              name="bank_account_holder"
+              type="text"
+              value={formData.bank_account_holder}
+              onChange={handleChange}
+            />
+          </div>
 
         <div className="form-section">
           <h2>Address</h2>

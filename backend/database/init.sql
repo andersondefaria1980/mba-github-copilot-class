@@ -20,6 +20,10 @@ CREATE TABLE customers (
     street VARCHAR(150),
     number VARCHAR(10),
     postal_code VARCHAR(20),
+    monthly_income NUMERIC(12,2),
+    bank_name VARCHAR(100),
+    bank_account_number VARCHAR(50),
+    bank_account_holder VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

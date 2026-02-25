@@ -44,6 +44,11 @@ const CustomerList = () => {
     return parts.length > 0 ? parts.join(', ') : '-';
   };
 
+  const formatIncome = (income) => {
+    if (income === null || income === undefined || income === '') return '-';
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(income);
+  };
+
   const handleLogout = () => {
     logout();
     navigate('/login');
@@ -87,6 +92,7 @@ const CustomerList = () => {
                 <th>Phone</th>
                 <th>Birth Date</th>
                 <th>Profession</th>
+                <th>Monthly Income</th>
                 <th>Address</th>
                 <th>Actions</th>
               </tr>
@@ -99,6 +105,7 @@ const CustomerList = () => {
                   <td>{customer.phone}</td>
                   <td>{formatDate(customer.birth_date)}</td>
                   <td>{customer.profession || '-'}</td>
+                  <td>{formatIncome(customer.monthly_income)}</td>
                   <td className="address-cell">{formatAddress(customer)}</td>
                   <td>
                     <button
