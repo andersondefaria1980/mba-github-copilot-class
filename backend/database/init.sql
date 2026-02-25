@@ -31,3 +31,9 @@ CREATE INDEX idx_customers_email ON customers(email);
 -- Hash generated with bcrypt salt rounds 10
 INSERT INTO users (username, password_hash) 
 VALUES ('admin', '$2b$10$djnrXZL2cxDNDs/KM4tM4.SuUYMcZpBjI9/qSf6sGpPkWMiepkXdm');
+
+-- Seed sample customers for testing
+INSERT INTO customers (name, birth_date, email, phone, profession, country, state, city, street, number, postal_code) VALUES
+('Maria Silva', '1985-03-15', 'maria.silva@email.com', '+55 11 98765-4321', 'Software Engineer', 'Brazil', 'SP', 'São Paulo', 'Av. Paulista', '1000', '01310-100'),
+('João Santos', '1990-07-22', 'joao.santos@email.com', '+55 21 99876-5432', 'Data Analyst', 'Brazil', 'RJ', 'Rio de Janeiro', 'Av. Atlântica', '500', '22021-001'),
+('Ana Costa', '1988-11-30', 'ana.costa@email.com', '+55 31 97654-3210', 'Product Manager', 'Brazil', 'MG', 'Belo Horizonte', 'Av. Afonso Pena', '1500', '30130-002');
